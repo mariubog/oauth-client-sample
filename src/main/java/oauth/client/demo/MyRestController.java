@@ -30,22 +30,22 @@ public class MyRestController {
 
 	@RequestMapping(value = "/results-asynch")
 	@ResponseBody
-	public String resultsAsynch() throws Exception {
+	public Map resultsAsynch() throws Exception {
 
 		Future<Map> futureMap = oauthConnectionService.getAsynchronousResults(
 				resourceUrl, Map.class, restTemplate);
 		while (futureMap.isDone()) {
 			Thread.sleep(10);
 		}
-		return "Results retrived: \n" + futureMap.get().toString();
+		return futureMap.get();
 	}
 
 	@RequestMapping(value = "/results")
 	@ResponseBody
-	public String results() throws Exception {
+	public Map results() throws Exception {
 
-		Map map = oauthConnectionService.getClientOnlyResults(resourceUrl,
+		Map results = oauthConnectionService.getClientOnlyResults(resourceUrl,
 				Map.class, clientOnlyrestTemplate);
-		return "Results retrived: \n" + map.toString();
+		return results;
 	}
 }
