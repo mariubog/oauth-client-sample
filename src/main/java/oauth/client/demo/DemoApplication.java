@@ -1,9 +1,5 @@
 package oauth.client.demo;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import oauth.client.demo.config.ClientOnlyResourceOwnerPasswordResourceDetails;
 
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -72,6 +68,8 @@ public class DemoApplication {
 	@Qualifier("myClientOnlyFullAcessDetails")
 	protected OAuth2ProtectedResourceDetails fullAccessresourceDetailsClientOnly(
 			String tokenUrl) {
+		// using overriden
+		// OnlyResourceOwnerPasswordResourceDetails.isClientOnly()
 		ClientOnlyResourceOwnerPasswordResourceDetails resource = new ClientOnlyResourceOwnerPasswordResourceDetails();
 		resource.setAccessTokenUri(tokenUrl);
 		resource.setClientId("clientapp");
@@ -80,7 +78,6 @@ public class DemoApplication {
 		resource.setScope(DemoApplicationUtils.getScopesList("read", "write"));
 		resource.setUsername("roy");
 		resource.setPassword("spring");
-		resource.isClientOnly();
 		return resource;
 	}
 
