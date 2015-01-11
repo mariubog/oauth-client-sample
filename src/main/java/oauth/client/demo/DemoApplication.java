@@ -1,7 +1,10 @@
 package oauth.client.demo;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import oauth.client.demo.config.ClientOnlyResourceOwnerPasswordResourceDetails;
 
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,14 +29,6 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 @EnableOAuth2Client
 @EnableAsync
 public class DemoApplication {
-
-	@Value("${oauth.resource:http://localhost:8080}")
-	private String baseUrl;
-	@Value("${oauth.authorize:http://localhost:8080/oauth/authorize}")
-	private String authorizeUrl;
-	@Value("${oauth.token:http://localhost:8080/oauth/token}")
-	private String tokenUrl;
-
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 
@@ -41,27 +36,52 @@ public class DemoApplication {
 
 	@Bean
 	@Qualifier("myRestTemplate")
-	public OAuth2RestOperations restTemplate() {
+	public OAuth2RestOperations restTemplate(
+			@Value("${oauth.token}") String tokenUrl) {
 		AccessTokenRequest atr = new DefaultAccessTokenRequest();
+		return new OAuth2RestTemplate(fullAccessresourceDetails(tokenUrl),
+				new DefaultOAuth2ClientContext(atr));
+	}
 
-		return new OAuth2RestTemplate(fullAccessresourceDetails(),
+	@Bean
+	@Qualifier("myClientOnlyRestTemplate")
+	public OAuth2RestOperations restClientOnlyTemplate(
+			@Value("${oauth.token}") String tokenUrl) {
+		AccessTokenRequest atr = new DefaultAccessTokenRequest();
+		return new OAuth2RestTemplate(
+				fullAccessresourceDetailsClientOnly(tokenUrl),
 				new DefaultOAuth2ClientContext(atr));
 	}
 
 	@Bean
 	@Qualifier("myFullAcessDetails")
-	protected OAuth2ProtectedResourceDetails fullAccessresourceDetails() {
+	protected OAuth2ProtectedResourceDetails fullAccessresourceDetails(
+			String tokenUrl) {
 		ResourceOwnerPasswordResourceDetails resource = new ResourceOwnerPasswordResourceDetails();
-		List<String> scopes = new ArrayList<String>(2);
-		scopes.add("write");
-		scopes.add("read");
 		resource.setAccessTokenUri(tokenUrl);
 		resource.setClientId("clientapp");
 		resource.setClientSecret("123456");
 		resource.setGrantType("password");
-		resource.setScope(scopes);
+		resource.setScope(DemoApplicationUtils.getScopesList("read", "write"));
 		resource.setUsername("roy");
 		resource.setPassword("spring");
 		return resource;
 	}
+
+	@Bean
+	@Qualifier("myClientOnlyFullAcessDetails")
+	protected OAuth2ProtectedResourceDetails fullAccessresourceDetailsClientOnly(
+			String tokenUrl) {
+		ClientOnlyResourceOwnerPasswordResourceDetails resource = new ClientOnlyResourceOwnerPasswordResourceDetails();
+		resource.setAccessTokenUri(tokenUrl);
+		resource.setClientId("clientapp");
+		resource.setClientSecret("123456");
+		resource.setGrantType("password");
+		resource.setScope(DemoApplicationUtils.getScopesList("read", "write"));
+		resource.setUsername("roy");
+		resource.setPassword("spring");
+		resource.isClientOnly();
+		return resource;
+	}
+
 }

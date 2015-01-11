@@ -1,4 +1,4 @@
-/home/marbro/new_work/oath2-client-demo/src/main/java/oauth/client/demo/MyRestController.java
-/home/marbro/new_work/oath2-client-demo/src/main/java/oauth/client/demo/DemoApplication.java
-/home/marbro/new_work/oath2-client-demo/src/main/java/oauth/client/demo/config/WebSecurityConfig.java
-/home/marbro/new_work/oath2-client-demo/src/main/java/oauth/client/demo/oauth/service/OauthConnectionService.java
+/home/marbro/git_rep/oath2-client-demo/src/main/java/oauth/client/demo/MyRestController.java
+/home/marbro/git_rep/oath2-client-demo/src/main/java/oauth/client/demo/DemoApplication.java
+/home/marbro/git_rep/oath2-client-demo/src/main/java/oauth/client/demo/config/WebSecurityConfig.java
+/home/marbro/git_rep/oath2-client-demo/src/main/java/oauth/client/demo/oauth/OauthConnectionService.java

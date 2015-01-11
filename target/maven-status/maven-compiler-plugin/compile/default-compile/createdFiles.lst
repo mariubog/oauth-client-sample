@@ -1,4 +1,4 @@
 oauth/client/demo/DemoApplication.class
 oauth/client/demo/MyRestController.class
-oauth/client/demo/oauth/service/OauthConnectionService.class
+oauth/client/demo/oauth/OauthConnectionService.class
 oauth/client/demo/config/WebSecurityConfig.class
