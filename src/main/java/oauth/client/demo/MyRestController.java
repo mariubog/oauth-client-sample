@@ -48,4 +48,13 @@ public class MyRestController {
 				Map.class, clientOnlyrestTemplate);
 		return results;
 	}
+
+	@RequestMapping(value = "/authorized-results")
+	@ResponseBody
+	public Map authorized() throws Exception {
+		Map results = oauthConnectionService.getResults(resourceUrl, Map.class,
+				restTemplate);
+
+		return results;
+	}
 }

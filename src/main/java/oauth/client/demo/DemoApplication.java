@@ -82,5 +82,5 @@ public class DemoApplication {
 		resource.setPassword("spring");
 		return resource;
 	}
-
+//if not client only than user has to be logged in on client side very simple...
 }

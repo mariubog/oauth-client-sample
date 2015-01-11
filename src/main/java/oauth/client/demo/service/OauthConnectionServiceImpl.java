@@ -17,9 +17,16 @@ public class OauthConnectionServiceImpl implements OauthConnectionService {
 				restTemplate));
 	}
 
+	@Override
 	public <T> T getClientOnlyResults(String resourceUrl, Class<T> resultType,
 			RestOperations clientOnlyrestTemplate) {
 		return getForObject(resourceUrl, resultType, clientOnlyrestTemplate);
+	}
+
+	@Override
+	public <T> T getResults(String resourceUrl, Class<T> resultType,
+			RestOperations restTemplate) {
+		return getForObject(resourceUrl, resultType, restTemplate);
 	}
 
 }
