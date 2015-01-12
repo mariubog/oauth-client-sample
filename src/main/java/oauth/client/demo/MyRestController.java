@@ -37,7 +37,8 @@ public class MyRestController {
 	/*
 	 * In this method if token is not obtained exception is ***NOT*** thrown and
 	 * access token is obtrained by template. It bypasses requirement for
-	 * associating request with authenticated user ? *
+	 * associating request with authenticated user ? This uri does not require
+	 * authentication
 	 */
 	@RequestMapping(value = "/results-asynch")
 	@ResponseBody
@@ -59,7 +60,7 @@ public class MyRestController {
 
 	/*
 	 * If token is not obtained exception is thrown
-	 * InsufficientAuthenticationException This endpoint does not require
+	 * InsufficientAuthenticationException This uri does not require
 	 * authentication
 	 */
 	@RequestMapping(value = "/results-nonauthorized")
@@ -81,8 +82,8 @@ public class MyRestController {
 	/*
 	 * Template used has clientOnly() method returning true so user
 	 * authorization is not necessary. Uses {@link
-	 * ClientOnlyResourceOwnerPasswordResourceDetails} This endpoint does not
-	 * require authentication
+	 * ClientOnlyResourceOwnerPasswordResourceDetails} This uri does not require
+	 * authentication
 	 */
 	@RequestMapping(value = "/results")
 	@ResponseBody
@@ -93,7 +94,7 @@ public class MyRestController {
 
 	/*
 	 * User is being redirected to login page for required authorization This
-	 * endpoint REQUIRES authentication
+	 * uri REQUIRES authentication
 	 */
 	@RequestMapping(value = "/authorized-results")
 	@ResponseBody
