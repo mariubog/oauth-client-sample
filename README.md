@@ -9,7 +9,7 @@ Royclarkson service is runing on port 8080 so this app is runing on port 8005 wh
 It is basic spring boot application that can be started with 
 `mvn clean package spring-boot:run`
 
-Instructions how to run RESTful service  protected by OAuth 2 required for this client to interact are posted here
+Instructions how to run RESTful service  protected by OAuth 2 required for this client to interact with are posted here.
 
 https://github.com/royclarkson/spring-rest-service-oauth.
 
