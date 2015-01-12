@@ -1,5 +1,5 @@
 # oauth-client-sample
-Sample Ouath2 client app connecting to REST service secured with Oauth2.
+#####Sample Ouath2 client app connecting to REST service secured with Oauth2.
 
 
 It connects to the sample service creted by royclarkson. You can find it here https://github.com/royclarkson/spring-rest-service-oauth.
