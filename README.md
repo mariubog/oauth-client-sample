@@ -17,4 +17,17 @@ https://github.com/royclarkson/spring-rest-service-oauth.
 
 Both applications obviously have to be run simultanously. 
 
+After starting application you can use following links
+  
+
+http://localhost:8005/results-asynch
+
+http://localhost:8005/results-nonauthorized
+
+http://localhost:8005/results
+
+http://localhost:8005/authorized-results
+
+
+
 
