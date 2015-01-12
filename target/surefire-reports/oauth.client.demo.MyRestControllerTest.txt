@@ -1,0 +1,12 @@
+-------------------------------------------------------------------------------
+Test set: oauth.client.demo.MyRestControllerTest
+-------------------------------------------------------------------------------
+Tests run: 4, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 3.676 sec <<< FAILURE! - in oauth.client.demo.MyRestControllerTest
+nonAuthorizedResultsLoginNotRequired(oauth.client.demo.MyRestControllerTest)  Time elapsed: 0.023 sec  <<< FAILURE!
+java.lang.AssertionError: Response status expected:<401> but was:<200>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:60)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:89)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers$2.match(StatusResultMatchers.java:65)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:152)
+	at oauth.client.demo.MyRestControllerTest.nonAuthorizedResultsLoginNotRequired(MyRestControllerTest.java:84)
+

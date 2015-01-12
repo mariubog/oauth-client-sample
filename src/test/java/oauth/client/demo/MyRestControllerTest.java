@@ -10,6 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.web.FilterChainProxy;
 import org.springframework.test.context.ContextConfiguration;
@@ -31,6 +32,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class MyRestControllerTest {
 	@Autowired
 	WebApplicationContext context;
+	@Autowired
+	private FilterChainProxy springSecurityFilterChain;
 	@InjectMocks
 	MyRestController controller;
 
@@ -39,7 +42,8 @@ public class MyRestControllerTest {
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
-		mvc = MockMvcBuilders.webAppContextSetup(context).build();
+		mvc = MockMvcBuilders.webAppContextSetup(context)
+				.addFilter(springSecurityFilterChain).build();
 	}
 
 	@Test
@@ -55,7 +59,7 @@ public class MyRestControllerTest {
 	}
 
 	@Test
-	public void results() throws Exception {
+	public void resultsClientOnly() throws Exception {
 
 		mvc.perform(get("/results").accept(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
@@ -65,4 +69,12 @@ public class MyRestControllerTest {
 										MediaType
 												.parseMediaType(MediaType.APPLICATION_JSON_VALUE)));
 	}
+
+	@Test
+	public void resultsRedirectToLogin() throws Exception {
+		mvc.perform(get("/authorized-results")).andExpect(
+				status().is(HttpStatus.FOUND.value()));
+
+	}
+
 }

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="oauth.client.demo.MyRestControllerTest" time="0.327" tests="4" errors="0" skipped="0" failures="1">
+  <properties>
+    <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
+    <property name="sun.boot.library.path" value="/usr/java/jdk1.8.0_25/jre/lib/amd64"/>
+    <property name="java.vm.version" value="25.25-b02"/>
+    <property name="java.vm.vendor" value="Oracle Corporation"/>
+    <property name="java.vendor.url" value="http://java.oracle.com/"/>
+    <property name="path.separator" value=":"/>
+    <property name="guice.disable.misplaced.annotation.check" value="true"/>
+    <property name="java.vm.name" value="Java HotSpot(TM) 64-Bit Server VM"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="user.country" value="US"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="user.dir" value="/home/marbro/git_rep/oath2-client-demo"/>
+    <property name="java.runtime.version" value="1.8.0_25-b17"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="java.endorsed.dirs" value="/usr/java/jdk1.8.0_25/jre/lib/endorsed"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="os.name" value="Linux"/>
+    <property name="classworlds.conf" value="/home/marbro/apache-maven-3.2.3/bin/m2.conf"/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.class.version" value="52.0"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="os.version" value="3.11.10-25-desktop"/>
+    <property name="user.home" value="/home/marbro"/>
+    <property name="user.timezone" value="America/New_York"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="user.name" value="marbro"/>
+    <property name="java.class.path" value="/home/marbro/apache-maven-3.2.3/boot/plexus-classworlds-2.5.1.jar"/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.home" value="/usr/java/jdk1.8.0_25/jre"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher clean test"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="user.language" value="en"/>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.version" value="1.8.0_25"/>
+    <property name="java.ext.dirs" value="/usr/java/jdk1.8.0_25/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="securerandom.source" value="file:/dev/./urandom"/>
+    <property name="sun.boot.class.path" value="/usr/java/jdk1.8.0_25/jre/lib/resources.jar:/usr/java/jdk1.8.0_25/jre/lib/rt.jar:/usr/java/jdk1.8.0_25/jre/lib/sunrsasign.jar:/usr/java/jdk1.8.0_25/jre/lib/jsse.jar:/usr/java/jdk1.8.0_25/jre/lib/jce.jar:/usr/java/jdk1.8.0_25/jre/lib/charsets.jar:/usr/java/jdk1.8.0_25/jre/lib/jfr.jar:/usr/java/jdk1.8.0_25/jre/classes"/>
+    <property name="java.vendor" value="Oracle Corporation"/>
+    <property name="maven.home" value="/home/marbro/apache-maven-3.2.3"/>
+    <property name="file.separator" value="/"/>
+    <property name="java.vendor.url.bug" value="http://bugreport.sun.com/bugreport/"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="sun.cpu.isalist" value=""/>
+  </properties>
+  <testcase name="resultsAsynch" classname="oauth.client.demo.MyRestControllerTest" time="0.256"/>
+  <testcase name="nonAuthorizedResultsLoginNotRequired" classname="oauth.client.demo.MyRestControllerTest" time="0.023">
+    <failure message="Response status expected:&lt;401&gt; but was:&lt;200&gt;" type="java.lang.AssertionError"><![CDATA[java.lang.AssertionError: Response status expected:<401> but was:<200>
+	at org.springframework.test.util.AssertionErrors.fail(AssertionErrors.java:60)
+	at org.springframework.test.util.AssertionErrors.assertEquals(AssertionErrors.java:89)
+	at org.springframework.test.web.servlet.result.StatusResultMatchers$2.match(StatusResultMatchers.java:65)
+	at org.springframework.test.web.servlet.MockMvc$1.andExpect(MockMvc.java:152)
+	at oauth.client.demo.MyRestControllerTest.nonAuthorizedResultsLoginNotRequired(MyRestControllerTest.java:84)
+]]></failure>
+    <system-out><![CDATA[19:46:23.637 [main] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved @ProfileValueSourceConfiguration [null] for test class [oauth.client.demo.MyRestControllerTest]
+19:46:23.637 [main] DEBUG o.s.t.annotation.ProfileValueUtils - Retrieved ProfileValueSource type [class org.springframework.test.annotation.SystemProfileValueSource] for class [oauth.client.demo.MyRestControllerTest]
+19:46:23.637 [main] DEBUG o.s.t.c.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext from cache with key [[WebMergedContextConfiguration@1786dec2 testClass = MyRestControllerTest, locations = '{}', classes = '{class oauth.client.demo.DemoApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]]]
+19:46:23.637 [main] DEBUG o.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [ContextCache@415156bf size = 1, hitCount = 2, missCount = 1, parentContextCount = 0]
+19:46:23.637 [main] DEBUG o.s.t.c.w.ServletTestExecutionListener - Setting up MockHttpServletRequest, MockHttpServletResponse, ServletWebRequest, and RequestContextHolder for test context [DefaultTestContext@393881f0 testClass = MyRestControllerTest, testInstance = oauth.client.demo.MyRestControllerTest@3047254d, testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@1786dec2 testClass = MyRestControllerTest, locations = '{}', classes = '{class oauth.client.demo.DemoApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]]].
+19:46:23.638 [main] DEBUG o.s.t.c.s.DependencyInjectionTestExecutionListener - Performing dependency injection for test context [[DefaultTestContext@393881f0 testClass = MyRestControllerTest, testInstance = oauth.client.demo.MyRestControllerTest@3047254d, testMethod = [null], testException = [null], mergedContextConfiguration = [WebMergedContextConfiguration@1786dec2 testClass = MyRestControllerTest, locations = '{}', classes = '{class oauth.client.demo.DemoApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]]]].
+19:46:23.638 [main] DEBUG o.s.t.c.DefaultCacheAwareContextLoaderDelegate - Retrieved ApplicationContext from cache with key [[WebMergedContextConfiguration@1786dec2 testClass = MyRestControllerTest, locations = '{}', classes = '{class oauth.client.demo.DemoApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]]]
+19:46:23.638 [main] DEBUG o.springframework.test.context.cache - Spring test ApplicationContext cache statistics: [ContextCache@415156bf size = 1, hitCount = 3, missCount = 1, parentContextCount = 0]
+19:46:23.638 [main] DEBUG o.s.b.f.annotation.InjectionMetadata - Processing injected element of bean 'oauth.client.demo.MyRestControllerTest': AutowiredFieldElement for org.springframework.web.context.WebApplicationContext oauth.client.demo.MyRestControllerTest.context
+19:46:23.638 [main] DEBUG o.s.b.f.annotation.InjectionMetadata - Processing injected element of bean 'oauth.client.demo.MyRestControllerTest': AutowiredFieldElement for private org.springframework.security.web.FilterChainProxy oauth.client.demo.MyRestControllerTest.springSecurityFilterChain
+19:46:23.638 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'springSecurityFilterChain'
+19:46:23.639 [main] DEBUG o.s.t.w.s.TestDispatcherServlet - Initializing servlet ''
+19:46:23.640 [main] DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [servletConfigInitParams] PropertySource with lowest search precedence
+19:46:23.640 [main] DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [servletContextInitParams] PropertySource with lowest search precedence
+19:46:23.640 [main] DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [systemProperties] PropertySource with lowest search precedence
+19:46:23.640 [main] DEBUG o.s.w.c.s.StandardServletEnvironment - Adding [systemEnvironment] PropertySource with lowest search precedence
+19:46:23.640 [main] DEBUG o.s.w.c.s.StandardServletEnvironment - Initialized StandardServletEnvironment with PropertySources [servletConfigInitParams,servletContextInitParams,systemProperties,systemEnvironment]
+19:46:23.641 [main] INFO  o.s.mock.web.MockServletContext - Initializing Spring FrameworkServlet ''
+19:46:23.641 [main] INFO  o.s.t.w.s.TestDispatcherServlet - FrameworkServlet '': initialization started
+19:46:23.641 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'multipartResolver'
+19:46:23.641 [main] DEBUG o.s.t.w.s.TestDispatcherServlet - Using MultipartResolver [org.springframework.web.multipart.support.StandardServletMultipartResolver@2e140e59]
+19:46:23.642 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver'
+19:46:23.642 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver'
+19:46:23.642 [main] DEBUG o.s.t.w.s.TestDispatcherServlet - Unable to locate LocaleResolver with name 'localeResolver': using default [org.springframework.web.servlet.i18n.AcceptHeaderLocaleResolver@4e92466a]
+19:46:23.642 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.web.servlet.theme.FixedThemeResolver'
+19:46:23.643 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.web.servlet.theme.FixedThemeResolver'
+19:46:23.643 [main] DEBUG o.s.t.w.s.TestDispatcherServlet - Unable to locate ThemeResolver with name 'themeResolver': using default [org.springframework.web.servlet.theme.FixedThemeResolver@66e8997c]
+19:46:23.643 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'requestMappingHandlerMapping'
+19:46:23.643 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'viewControllerHandlerMapping'
+19:46:23.643 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'beanNameHandlerMapping'
+19:46:23.643 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'resourceHandlerMapping'
+19:46:23.643 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'defaultServletHandlerMapping'
+19:46:23.644 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'faviconHandlerMapping'
+19:46:23.644 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'requestMappingHandlerAdapter'
+19:46:23.644 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'httpRequestHandlerAdapter'
+19:46:23.644 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'simpleControllerHandlerAdapter'
+19:46:23.644 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'errorAttributes'
+19:46:23.644 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'handlerExceptionResolver'
+19:46:23.644 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator'
+19:46:23.645 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator'
+19:46:23.645 [main] DEBUG o.s.t.w.s.TestDispatcherServlet - Unable to locate RequestToViewNameTranslator with name 'viewNameTranslator': using default [org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@6f0cb5a1]
+19:46:23.645 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'beanNameViewResolver'
+19:46:23.645 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'mvcViewResolver'
+19:46:23.645 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'defaultViewResolver'
+19:46:23.645 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'viewResolver'
+19:46:23.645 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Creating instance of bean 'org.springframework.web.servlet.support.SessionFlashMapManager'
+19:46:23.646 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Finished creating instance of bean 'org.springframework.web.servlet.support.SessionFlashMapManager'
+19:46:23.646 [main] DEBUG o.s.t.w.s.TestDispatcherServlet - Unable to locate FlashMapManager with name 'flashMapManager': using default [org.springframework.web.servlet.support.SessionFlashMapManager@1b29d52b]
+19:46:23.646 [main] DEBUG o.s.t.w.s.TestDispatcherServlet - Published WebApplicationContext of servlet '' as ServletContext attribute with name [org.springframework.web.servlet.FrameworkServlet.CONTEXT.]
+19:46:23.646 [main] INFO  o.s.t.w.s.TestDispatcherServlet - FrameworkServlet '': initialization completed in 5 ms
+19:46:23.646 [main] DEBUG o.s.t.w.s.TestDispatcherServlet - Servlet '' configured successfully
+19:46:23.646 [main] DEBUG o.s.security.web.FilterChainProxy - /results-nonauthorized at position 1 of 13 in additional filter chain; firing Filter: 'WebAsyncManagerIntegrationFilter'
+19:46:23.646 [main] DEBUG o.s.security.web.FilterChainProxy - /results-nonauthorized at position 2 of 13 in additional filter chain; firing Filter: 'SecurityContextPersistenceFilter'
+19:46:23.646 [main] DEBUG o.s.s.w.c.HttpSessionSecurityContextRepository - No HttpSession currently exists
+19:46:23.646 [main] DEBUG o.s.s.w.c.HttpSessionSecurityContextRepository - No SecurityContext was available from the HttpSession: null. A new one will be created.
+19:46:23.646 [main] DEBUG o.s.security.web.FilterChainProxy - /results-nonauthorized at position 3 of 13 in additional filter chain; firing Filter: 'HeaderWriterFilter'
+19:46:23.646 [main] DEBUG o.s.s.w.h.writers.HstsHeaderWriter - Not injecting HSTS header since it did not match the requestMatcher org.springframework.security.web.header.writers.HstsHeaderWriter$SecureRequestMatcher@62e7dffa
+19:46:23.646 [main] DEBUG o.s.security.web.FilterChainProxy - /results-nonauthorized at position 4 of 13 in additional filter chain; firing Filter: 'CsrfFilter'
+19:46:23.647 [main] DEBUG o.s.security.web.FilterChainProxy - /results-nonauthorized at position 5 of 13 in additional filter chain; firing Filter: 'LogoutFilter'
+19:46:23.647 [main] DEBUG o.s.s.w.u.m.AntPathRequestMatcher - Request 'GET /results-nonauthorized' doesn't match 'POST /logout
+19:46:23.647 [main] DEBUG o.s.security.web.FilterChainProxy - /results-nonauthorized at position 6 of 13 in additional filter chain; firing Filter: 'UsernamePasswordAuthenticationFilter'
+19:46:23.647 [main] DEBUG o.s.s.w.u.m.AntPathRequestMatcher - Request 'GET /results-nonauthorized' doesn't match 'POST /login
+19:46:23.647 [main] DEBUG o.s.security.web.FilterChainProxy - /results-nonauthorized at position 7 of 13 in additional filter chain; firing Filter: 'DefaultLoginPageGeneratingFilter'
+19:46:23.647 [main] DEBUG o.s.security.web.FilterChainProxy - /results-nonauthorized at position 8 of 13 in additional filter chain; firing Filter: 'RequestCacheAwareFilter'
+19:46:23.647 [main] DEBUG o.s.security.web.FilterChainProxy - /results-nonauthorized at position 9 of 13 in additional filter chain; firing Filter: 'SecurityContextHolderAwareRequestFilter'
+19:46:23.647 [main] DEBUG o.s.security.web.FilterChainProxy - /results-nonauthorized at position 10 of 13 in additional filter chain; firing Filter: 'AnonymousAuthenticationFilter'
+19:46:23.647 [main] DEBUG o.s.s.w.a.AnonymousAuthenticationFilter - Populated SecurityContextHolder with anonymous token: 'org.springframework.security.authentication.AnonymousAuthenticationToken@9055e4a6: Principal: anonymousUser; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@957e: RemoteIpAddress: 127.0.0.1; SessionId: null; Granted Authorities: ROLE_ANONYMOUS'
+19:46:23.647 [main] DEBUG o.s.security.web.FilterChainProxy - /results-nonauthorized at position 11 of 13 in additional filter chain; firing Filter: 'SessionManagementFilter'
+19:46:23.648 [main] DEBUG o.s.security.web.FilterChainProxy - /results-nonauthorized at position 12 of 13 in additional filter chain; firing Filter: 'ExceptionTranslationFilter'
+19:46:23.648 [main] DEBUG o.s.security.web.FilterChainProxy - /results-nonauthorized at position 13 of 13 in additional filter chain; firing Filter: 'FilterSecurityInterceptor'
+19:46:23.648 [main] DEBUG o.s.s.w.u.m.AntPathRequestMatcher - Request 'GET /results-nonauthorized' doesn't match 'POST /logout
+19:46:23.648 [main] DEBUG o.s.s.w.u.m.AntPathRequestMatcher - Checking match of request : '/results-nonauthorized'; against '/'
+19:46:23.648 [main] DEBUG o.s.s.w.u.m.AntPathRequestMatcher - Checking match of request : '/results-nonauthorized'; against '/results*'
+19:46:23.649 [main] DEBUG o.s.s.w.a.i.FilterSecurityInterceptor - Secure object: FilterInvocation: URL: /results-nonauthorized; Attributes: [permitAll]
+19:46:23.649 [main] DEBUG o.s.s.w.a.i.FilterSecurityInterceptor - Previously Authenticated: org.springframework.security.authentication.AnonymousAuthenticationToken@9055e4a6: Principal: anonymousUser; Credentials: [PROTECTED]; Authenticated: true; Details: org.springframework.security.web.authentication.WebAuthenticationDetails@957e: RemoteIpAddress: 127.0.0.1; SessionId: null; Granted Authorities: ROLE_ANONYMOUS
+19:46:23.649 [main] DEBUG o.s.s.access.vote.AffirmativeBased - Voter: org.springframework.security.web.access.expression.WebExpressionVoter@5f80fa43, returned: 1
+19:46:23.649 [main] DEBUG o.s.s.w.a.i.FilterSecurityInterceptor - Authorization successful
+19:46:23.649 [main] DEBUG o.s.s.w.a.i.FilterSecurityInterceptor - RunAsManager did not change Authentication object
+19:46:23.649 [main] DEBUG o.s.security.web.FilterChainProxy - /results-nonauthorized reached end of additional filter chain; proceeding with original chain
+19:46:23.649 [main] DEBUG o.s.t.w.s.TestDispatcherServlet - DispatcherServlet with name '' processing GET request for [/results-nonauthorized]
+19:46:23.649 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Looking up handler method for path /results-nonauthorized
+19:46:23.649 [main] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Returning handler method [public java.util.Map oauth.client.demo.MyRestController.nonAuthorizedResultsLoginNotRequired(javax.servlet.http.HttpServletResponse) throws java.lang.Exception]
+19:46:23.650 [main] DEBUG o.s.b.f.s.DefaultListableBeanFactory - Returning cached instance of singleton bean 'myRestController'
+19:46:23.650 [main] DEBUG o.s.t.w.s.TestDispatcherServlet - Last-Modified value for [/results-nonauthorized] is: -1
+19:46:23.652 [main] DEBUG o.s.s.o.client.OAuth2RestTemplate - Created GET request for "http://localhost:8080/greeting"
+19:46:23.652 [main] DEBUG o.s.s.o.client.OAuth2RestTemplate - Setting request Accept header to [application/json, application/*+json]
+19:46:23.655 [main] DEBUG o.s.s.o.client.OAuth2RestTemplate - GET request for "http://localhost:8080/greeting" resulted in 200 (OK)
+19:46:23.655 [main] DEBUG o.s.s.o.client.OAuth2RestTemplate - Reading [interface java.util.Map] as "application/json;charset=UTF-8" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@764658ed]
+19:46:23.657 [main] DEBUG o.s.w.s.m.m.a.ResponseBodyAdviceChain - Invoking ResponseBodyAdvice chain for body={id=144, content=Hello, Roy!}
+19:46:23.657 [main] DEBUG o.s.w.s.m.m.a.ResponseBodyAdviceChain - After ResponseBodyAdvice chain body={id=144, content=Hello, Roy!}
+19:46:23.657 [main] DEBUG o.s.s.w.c.HttpSessionSecurityContextRepository - SecurityContext is empty or contents are anonymous - context will not be stored in HttpSession.
+19:46:23.657 [main] DEBUG o.s.s.w.c.HttpSessionSecurityContextRepository - SecurityContext is empty or contents are anonymous - context will not be stored in HttpSession.
+19:46:23.657 [main] DEBUG o.s.s.w.c.HttpSessionSecurityContextRepository - SecurityContext is empty or contents are anonymous - context will not be stored in HttpSession.
+19:46:23.657 [main] DEBUG o.s.w.s.m.m.a.RequestResponseBodyMethodProcessor - Written [{id=144, content=Hello, Roy!}] as "application/json;charset=UTF-8" using [org.springframework.http.converter.json.MappingJackson2HttpMessageConverter@7ef2d7a6]
+19:46:23.657 [main] DEBUG o.s.t.w.s.TestDispatcherServlet - Null ModelAndView returned to DispatcherServlet with name '': assuming HandlerAdapter completed request handling
+19:46:23.657 [main] DEBUG o.s.t.w.s.TestDispatcherServlet - Successfully completed request
+19:46:23.658 [main] DEBUG o.s.s.w.a.ExceptionTranslationFilter - Chain processed normally
+19:46:23.658 [main] DEBUG o.s.s.w.c.SecurityContextPersistenceFilter - SecurityContextHolder now cleared, as request processing completed
+19:46:23.658 [main] DEBUG o.s.t.c.s.DirtiesContextTestExecutionListener - After test method: context [DefaultTestContext@393881f0 testClass = MyRestControllerTest, testInstance = oauth.client.demo.MyRestControllerTest@3047254d, testMethod = nonAuthorizedResultsLoginNotRequired@MyRestControllerTest, testException = java.lang.AssertionError: Response status expected:<401> but was:<200>, mergedContextConfiguration = [WebMergedContextConfiguration@1786dec2 testClass = MyRestControllerTest, locations = '{}', classes = '{class oauth.client.demo.DemoApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]]], class dirties context [false], class mode [null], method dirties context [false].
+19:46:23.658 [main] DEBUG o.s.t.c.w.ServletTestExecutionListener - Resetting RequestContextHolder for test context [DefaultTestContext@393881f0 testClass = MyRestControllerTest, testInstance = oauth.client.demo.MyRestControllerTest@3047254d, testMethod = nonAuthorizedResultsLoginNotRequired@MyRestControllerTest, testException = java.lang.AssertionError: Response status expected:<401> but was:<200>, mergedContextConfiguration = [WebMergedContextConfiguration@1786dec2 testClass = MyRestControllerTest, locations = '{}', classes = '{class oauth.client.demo.DemoApplication}', contextInitializerClasses = '[]', activeProfiles = '{}', propertySourceLocations = '{}', propertySourceProperties = '{}', resourceBasePath = 'src/main/webapp', contextLoader = 'org.springframework.test.context.web.WebDelegatingSmartContextLoader', parent = [null]]].
+]]></system-out>
+  </testcase>
+  <testcase name="resultsRedirectToLogin" classname="oauth.client.demo.MyRestControllerTest" time="0.014"/>
+  <testcase name="resultsClientOnly" classname="oauth.client.demo.MyRestControllerTest" time="0.034"/>
+</testsuite>
