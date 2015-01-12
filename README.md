@@ -17,16 +17,41 @@ https://github.com/royclarkson/spring-rest-service-oauth.
 
 Both applications obviously have to be run simultanously. 
 
-After starting application you can use following links
+After starting application you can use following links either with curl or simple web browser.
   
+Link to access resource protected by Oauth with synchronazed method, uri does NOT require login on client side.
+Resource is acquired.
 
-http://localhost:8005/results-asynch
+`http://localhost:8005/results-asynch`
 
-http://localhost:8005/results-nonauthorized
 
-http://localhost:8005/results
 
-http://localhost:8005/authorized-results
+
+
+Link to access resource protected by Oauth , uri does NOT require login on client side.
+Resource is not acquired.Authorization is required.(If acces token had been acquired earlier this method completest and returnd desired results)
+
+`http://localhost:8005/results-nonauthorized`
+
+
+
+
+
+
+Link to access resource protected by Oauth using ResourceDetails clientOnly() == true, uri does NOT require login on client side.
+Resource is acquired.
+
+`http://localhost:8005/results`
+
+
+
+
+
+
+Link to access resource protected by Oauth with synchronazed method, uri  REQUIRES login on client side.
+Resource is acquired after authentication.
+
+`http://localhost:8005/authorized-results`
 
 
 
