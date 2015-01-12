@@ -29,7 +29,7 @@ Resource is acquired.
 
 
 Link to access resource protected by Oauth , uri does NOT require login on client side.
-Resource is not acquired.Authorization is required.(If acces token had been acquired earlier this method completest and returnd desired results)
+Resource is not acquired.Authorization is required.(If acces token had been acquired earlier this method completes and returns desired results)
 
 `http://localhost:8005/results-nonauthorized`
 
