@@ -15,7 +15,7 @@ https://github.com/royclarkson/spring-rest-service-oauth.
 
 
 
-Both applications obviously have to be run simultanously. 
+<i>Both applications obviously have to be run simultanously. </i>
 
 After starting application you can use following links either with curl or simple web browser.
   
