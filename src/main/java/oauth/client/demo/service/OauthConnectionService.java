@@ -3,7 +3,6 @@ package oauth.client.demo.service;
 import java.util.concurrent.Future;
 
 import org.springframework.scheduling.annotation.Async;
-import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestOperations;
 
 public interface OauthConnectionService {

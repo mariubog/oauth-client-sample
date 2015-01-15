@@ -1,7 +1,0 @@
-oauth/client/demo/MyRestController.class
-oauth/client/demo/config/WebSecurityConfig.class
-oauth/client/demo/DemoApplication.class
-oauth/client/demo/service/OauthConnectionServiceImpl.class
-oauth/client/demo/service/OauthConnectionService.class
-oauth/client/demo/DemoApplicationUtils.class
-oauth/client/demo/config/ClientOnlyResourceOwnerPasswordResourceDetails.class

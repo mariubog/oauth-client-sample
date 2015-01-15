@@ -1,7 +1,9 @@
-/home/marbro/git_rep/oath2-client-demo/src/main/java/oauth/client/demo/service/OauthConnectionServiceImpl.java
-/home/marbro/git_rep/oath2-client-demo/src/main/java/oauth/client/demo/DemoApplicationUtils.java
-/home/marbro/git_rep/oath2-client-demo/src/main/java/oauth/client/demo/config/ClientOnlyResourceOwnerPasswordResourceDetails.java
-/home/marbro/git_rep/oath2-client-demo/src/main/java/oauth/client/demo/MyRestController.java
-/home/marbro/git_rep/oath2-client-demo/src/main/java/oauth/client/demo/DemoApplication.java
-/home/marbro/git_rep/oath2-client-demo/src/main/java/oauth/client/demo/config/WebSecurityConfig.java
-/home/marbro/git_rep/oath2-client-demo/src/main/java/oauth/client/demo/service/OauthConnectionService.java
+/home/marbro/git_rep/oauth-client-sample-master/src/main/java/oauth/client/demo/config/ClientOnlyResourceOwnerPasswordResourceDetails.java
+/home/marbro/git_rep/oauth-client-sample-master/src/main/java/oauth/client/demo/MyRestController.java
+/home/marbro/git_rep/oauth-client-sample-master/src/main/java/oauth/client/demo/service/OauthConnectionServiceImpl.java
+/home/marbro/git_rep/oauth-client-sample-master/src/main/java/oauth/client/demo/config/WebSecurityConfig.java
+/home/marbro/git_rep/oauth-client-sample-master/src/main/java/oauth/client/demo/config/OauthClientConfig.java
+/home/marbro/git_rep/oauth-client-sample-master/src/main/java/oauth/client/demo/config/AcceptAllHttpsConfig.java
+/home/marbro/git_rep/oauth-client-sample-master/src/main/java/oauth/client/demo/DemoApplication.java
+/home/marbro/git_rep/oauth-client-sample-master/src/main/java/oauth/client/demo/DemoApplicationUtils.java
+/home/marbro/git_rep/oauth-client-sample-master/src/main/java/oauth/client/demo/service/OauthConnectionService.java

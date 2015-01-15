@@ -6,6 +6,6 @@ public class ClientOnlyResourceOwnerPasswordResourceDetails extends
 		ResourceOwnerPasswordResourceDetails {
 	@Override
 	public boolean isClientOnly() {
-		return true;
+		return false;
 	}
 }

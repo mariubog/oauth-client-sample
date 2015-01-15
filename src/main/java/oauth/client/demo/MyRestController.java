@@ -1,23 +1,20 @@
 package oauth.client.demo;
 
-import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Future;
 
 import javax.servlet.http.HttpServletResponse;
 
+import oauth.client.demo.config.OauthClientConfig;
 import oauth.client.demo.service.OauthConnectionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.security.authentication.InsufficientAuthenticationException;
 import org.springframework.security.oauth2.client.OAuth2RestOperations;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
 
 @SuppressWarnings("rawtypes")
 @RestController
@@ -34,56 +31,45 @@ public class MyRestController {
 	@Value("${oauth.resource.greeting}")
 	private String resourceUrl;
 
-	/*
+	/**
 	 * In this method if token is not obtained exception is ***NOT*** thrown and
-	 * access token is obtrained by template. It bypasses requirement for
+	 * access token is obtained by template. It bypasses requirement for
 	 * associating request with authenticated user ? This uri does not require
-	 * authentication
+	 * authentication on client side
 	 */
 	@RequestMapping(value = "/results-asynch")
 	@ResponseBody
 	public Map resultsAsynch(HttpServletResponse response) throws Exception {
-		try {
-			Future<Map> futureMap = oauthConnectionService
-					.getAsynchronousResults(resourceUrl, Map.class,
-							restTemplate);
-			while (futureMap.isDone()) {
-				Thread.sleep(10);
-			}
-			return futureMap.get();
-		} catch (InsufficientAuthenticationException e) {
-			response.setStatus(HttpStatus.UNAUTHORIZED.value());
-			e.printStackTrace();
+
+		Future<Map> futureMap = oauthConnectionService.getAsynchronousResults(
+				resourceUrl, Map.class, restTemplate);
+		while (futureMap.isDone()) {
+			Thread.sleep(10);
 		}
-		return null;
+
+		return futureMap.get();
 	}
 
-	/*
-	 * If token is not obtained exception is thrown
-	 * InsufficientAuthenticationException This uri does not require
-	 * authentication
+	/**
+	 * InsufficientAuthenticationException is not thrown since we have supplied
+	 * instance of{@link AccessTokenProvider} to the {@link OAuth2RestTemplate}
+	 * This uri does not require authentication on client side
+	 * 
+	 * @see OauthClientConfig#accessTokenProvider()
 	 */
 	@RequestMapping(value = "/results-nonauthorized")
 	@ResponseBody
 	public Map nonAuthorizedResultsLoginNotRequired(HttpServletResponse response)
 			throws Exception {
-		Map results = null;
-		try {
-			results = oauthConnectionService.getResults(resourceUrl, Map.class,
-					restTemplate);
-		} catch (InsufficientAuthenticationException e) {
-			results = null;
-			response.setStatus(HttpStatus.UNAUTHORIZED.value());
-			e.printStackTrace();
-		}
-		return results;
+		return oauthConnectionService.getResults(resourceUrl, Map.class,
+				restTemplate);
 	}
 
-	/*
+	/**
 	 * Template used has clientOnly() method returning true so user
-	 * authorization is not necessary. Uses {@link
-	 * ClientOnlyResourceOwnerPasswordResourceDetails} This uri does not require
-	 * authentication
+	 * authorization is not necessary. Uses
+	 * {@link ClientOnlyResourceOwnerPasswordResourceDetails} This uri does not
+	 * require authentication on client side
 	 */
 	@RequestMapping(value = "/results")
 	@ResponseBody
@@ -92,9 +78,9 @@ public class MyRestController {
 				Map.class, clientOnlyrestTemplate);
 	}
 
-	/*
+	/**
 	 * User is being redirected to login page for required authorization This
-	 * uri REQUIRES authentication
+	 * uri REQUIRES authentication on client side
 	 */
 	@RequestMapping(value = "/authorized-results")
 	@ResponseBody
