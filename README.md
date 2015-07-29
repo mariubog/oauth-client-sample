@@ -19,7 +19,7 @@ https://github.com/royclarkson/spring-rest-service-oauth.
 
 After starting application you can use following links either with curl or simple web browser.
   
-Link to access resource protected by Oauth with synchronazed method, uri does NOT require login on client side.
+Link to access resource protected by Oauth with not synchronazed method, uri does NOT require login on client side.
 Resource is acquired.
 
 `http://localhost:8005/results-asynch`
