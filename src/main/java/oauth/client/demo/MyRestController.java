@@ -43,7 +43,7 @@ public class MyRestController {
 
 		Future<Map> futureMap = oauthConnectionService.getAsynchronousResults(
 				resourceUrl, Map.class, restTemplate);
-		while (futureMap.isDone()) {
+		while (!futureMap.isDone()) {
 			Thread.sleep(10);
 		}
 
