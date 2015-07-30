@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.oauth2.client.OAuth2RestOperations;
+import org.springframework.security.oauth2.client.OAuth2RestTemplate;
+import org.springframework.security.oauth2.client.token.AccessTokenProvider;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,7 +31,10 @@ public class MyRestController {
 	OauthConnectionService oauthConnectionService;
 
 	@Value("${oauth.resource.greeting}")
-	private String resourceUrl;
+	private String userResourceUrl;
+
+	@Value("${oauth.resource.client_greeting}")
+	private String clientResourceUrl;
 
 	/**
 	 * In this method if token is not obtained exception is ***NOT*** thrown and
@@ -41,8 +46,7 @@ public class MyRestController {
 	@ResponseBody
 	public Map resultsAsynch(HttpServletResponse response) throws Exception {
 
-		Future<Map> futureMap = oauthConnectionService.getAsynchronousResults(
-				resourceUrl, Map.class, restTemplate);
+		Future<Map> futureMap = oauthConnectionService.getAsynchronousResults(userResourceUrl, Map.class, restTemplate);
 		while (!futureMap.isDone()) {
 			Thread.sleep(10);
 		}
@@ -55,14 +59,12 @@ public class MyRestController {
 	 * instance of{@link AccessTokenProvider} to the {@link OAuth2RestTemplate}
 	 * This uri does not require authentication on client side
 	 * 
-	 * @see OauthClientConfig#accessTokenProvider()
+	 * @see OauthClientConfig#userAccessTokenProvider()
 	 */
 	@RequestMapping(value = "/results-nonauthorized")
 	@ResponseBody
-	public Map nonAuthorizedResultsLoginNotRequired(HttpServletResponse response)
-			throws Exception {
-		return oauthConnectionService.getResults(resourceUrl, Map.class,
-				restTemplate);
+	public Map nonAuthorizedResultsLoginNotRequired(HttpServletResponse response) throws Exception {
+		return oauthConnectionService.getResults(userResourceUrl, Map.class, restTemplate);
 	}
 
 	/**
@@ -74,19 +76,32 @@ public class MyRestController {
 	@RequestMapping(value = "/results")
 	@ResponseBody
 	public Map results() throws Exception {
-		return oauthConnectionService.getClientOnlyResults(resourceUrl,
-				Map.class, clientOnlyrestTemplate);
+		return oauthConnectionService.getClientOnlyResults(clientResourceUrl, Map.class, clientOnlyrestTemplate);
 	}
 
 	/**
 	 * User is being redirected to login page for required authorization This
 	 * uri REQUIRES authentication on client side
+	 * 
+	 * 
+	 * 	if you want to set username and password for your template you can still do it here 
+	 * 	but you have to obtain username and password from the user 
+	 * 	
+	 * 	if (restTemplate.getResource() instanceof ResourceOwnerPasswordResourceDetails) {
+	 * 		((ResourceOwnerPasswordResourceDetails) restTemplate.getResource()).setUsername(username);
+	 * 		((ResourceOwnerPasswordResourceDetails) restTemplate.getResource()).setPassword(password);
+     * 
+	 * 	}
+	 * 	
+	 * 	in the rest template that is used in this example it is hard coded in the resource 
+	 * 	details here @see {@link OauthClientConfig#fullAccessresourceDetails(String)}
+	 * 		
 	 */
 	@RequestMapping(value = "/authorized-results")
 	@ResponseBody
 	public Map authorized() throws Exception {
-		return oauthConnectionService.getResults(resourceUrl, Map.class,
-				restTemplate);
+ 
+		return oauthConnectionService.getResults(userResourceUrl, Map.class, restTemplate);
 	}
 
 }

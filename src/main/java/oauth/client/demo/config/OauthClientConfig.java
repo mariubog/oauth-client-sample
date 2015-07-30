@@ -16,6 +16,8 @@ import org.springframework.security.oauth2.client.resource.OAuth2ProtectedResour
 import org.springframework.security.oauth2.client.token.AccessTokenProvider;
 import org.springframework.security.oauth2.client.token.AccessTokenProviderChain;
 import org.springframework.security.oauth2.client.token.DefaultAccessTokenRequest;
+import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsAccessTokenProvider;
+import org.springframework.security.oauth2.client.token.grant.client.ClientCredentialsResourceDetails;
 import org.springframework.security.oauth2.client.token.grant.password.ResourceOwnerPasswordAccessTokenProvider;
 import org.springframework.security.oauth2.client.token.grant.password.ResourceOwnerPasswordResourceDetails;
 
@@ -40,29 +42,29 @@ public class OauthClientConfig {
 
 	@Bean
 	@Qualifier("myRestTemplate")
-	public OAuth2RestOperations restTemplate(
-			@Value("${oauth.token}") String tokenUrl) {
+	public OAuth2RestOperations restTemplate(@Value("${oauth.token}") String tokenUrl) {
 
-		OAuth2RestTemplate template = new OAuth2RestTemplate(
-				fullAccessresourceDetails(tokenUrl),
-				new DefaultOAuth2ClientContext(new DefaultAccessTokenRequest()));
-		return prepareTemplate(template);
+		OAuth2RestTemplate template = new OAuth2RestTemplate(fullAccessresourceDetails(tokenUrl), new DefaultOAuth2ClientContext(
+				new DefaultAccessTokenRequest()));
+		return prepareTemplate(template, false);
 	}
 
 	@Bean
 	@Qualifier("myClientOnlyRestTemplate")
-	public OAuth2RestOperations restClientOnlyTemplate(
-			@Value("${oauth.token}") String tokenUrl) {
+	public OAuth2RestOperations restClientOnlyTemplate(@Value("${oauth.token}") String tokenUrl) {
 
-		OAuth2RestTemplate template = new OAuth2RestTemplate(
-				fullAccessresourceDetailsClientOnly(tokenUrl),
-				new DefaultOAuth2ClientContext(new DefaultAccessTokenRequest()));
-		return prepareTemplate(template);
+		OAuth2RestTemplate template = new OAuth2RestTemplate(fullAccessresourceDetailsClientOnly(tokenUrl), new DefaultOAuth2ClientContext(
+				new DefaultAccessTokenRequest()));
+		return prepareTemplate(template, true);
 	}
 
-	public OAuth2RestTemplate prepareTemplate(OAuth2RestTemplate template) {
+	public OAuth2RestTemplate prepareTemplate(OAuth2RestTemplate template, boolean isClient) {
 		template.setRequestFactory(getClientHttpRequestFactory());
-		template.setAccessTokenProvider(accessTokenProvider());
+		if (isClient) {
+			template.setAccessTokenProvider(clientAccessTokenProvider());
+		} else {
+			template.setAccessTokenProvider(userAccessTokenProvider());
+		}
 		return template;
 	}
 
@@ -76,20 +78,25 @@ public class OauthClientConfig {
 	 * requirement for user to be logged in is skipped
 	 */
 	@Bean
-	public AccessTokenProvider accessTokenProvider() {
+	public AccessTokenProvider userAccessTokenProvider() {
 		ResourceOwnerPasswordAccessTokenProvider accessTokenProvider = new ResourceOwnerPasswordAccessTokenProvider();
 		accessTokenProvider.setRequestFactory(getClientHttpRequestFactory());
 		return accessTokenProvider;
 	}
 
 	@Bean
+	public AccessTokenProvider clientAccessTokenProvider() {
+		ClientCredentialsAccessTokenProvider accessTokenProvider = new ClientCredentialsAccessTokenProvider();
+		accessTokenProvider.setRequestFactory(getClientHttpRequestFactory());
+		return accessTokenProvider;
+	}
+
+	@Bean
 	@Qualifier("myFullAcessDetails")
-	protected OAuth2ProtectedResourceDetails fullAccessresourceDetails(
-			String tokenUrl) {
+	public OAuth2ProtectedResourceDetails fullAccessresourceDetails(String tokenUrl) {
 		ResourceOwnerPasswordResourceDetails resource = new ResourceOwnerPasswordResourceDetails();
 		resource.setAccessTokenUri(tokenUrl);
-		resource.setClientId("clientapp");
-		resource.setClientSecret("123456");
+		resource.setClientId("user_member");
 		resource.setGrantType("password");
 		resource.setScope(DemoApplicationUtils.getScopesList("read", "write"));
 		resource.setUsername("roy");
@@ -99,19 +106,13 @@ public class OauthClientConfig {
 
 	@Bean
 	@Qualifier("myClientOnlyFullAcessDetails")
-	protected OAuth2ProtectedResourceDetails fullAccessresourceDetailsClientOnly(
-			String tokenUrl) {
-		// using overriden
-		// OnlyResourceOwnerPasswordResourceDetails.isClientOnly()
-		ClientOnlyResourceOwnerPasswordResourceDetails resource = new ClientOnlyResourceOwnerPasswordResourceDetails();
+	public OAuth2ProtectedResourceDetails fullAccessresourceDetailsClientOnly(String tokenUrl) {
+		ClientCredentialsResourceDetails resource = new ClientCredentialsResourceDetails();
 		resource.setAccessTokenUri(tokenUrl);
 		resource.setClientId("clientapp");
 		resource.setClientSecret("123456");
-		resource.setGrantType("password");
+		resource.setGrantType("client_credentials");
 		resource.setScope(DemoApplicationUtils.getScopesList("read", "write"));
-		resource.setUsername("roy");
-		resource.setPassword("spring");
 		return resource;
 	}
-
 }
