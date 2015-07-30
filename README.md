@@ -6,6 +6,7 @@ It connects to the sample service created by royclarkson. You can find it here h
 Royclarkson service is runing on port 8080 and this app is runing on port 8005 which you can change according to your needs so it does not colide with other services.
 
 !!!  IMPORTANT !!!
+
 After I made changes to add clientOnly authentication by oauth server it does not work properly with above roys example, I made sufficient changes in my fork for his project and this example suppoesed to be used in order
 to get desirable results
 https://github.com/mariubog/spring-rest-service-oauth
