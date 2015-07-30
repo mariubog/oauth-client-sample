@@ -7,10 +7,10 @@ Royclarkson service is runing on port 8080 and this app is runing on port 8005 w
 
 !!!  IMPORTANT !!!
 
-After I made changes to add clientOnly authentication by oauth server it does not work properly with above roys example, I made sufficient changes in my fork for his project and this example suppoesed to be used in order
+After I made changes in order to add clientOnly template authentication   it does not work properly with above Roys' example, I made proper changes in my fork for his project and this example suppoesed to be used in order
 to get desirable results
 https://github.com/mariubog/spring-rest-service-oauth
-If I have chance and Roy agrees I ll try to pull request for these changes in his example, but for now please just use my fork.
+If I have a chance and Roy agrees I ll try to pull request for these changes in his example, but for now please just use my fork. Otherwise it will not work unless you make changes to comply with his authentication settings.
  
 It is basic spring boot application that can be started with 
 `mvn clean package spring-boot:run`
